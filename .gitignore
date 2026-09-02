@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Local data
+server/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+service-account.json
+*-service-account.json
+captcha.txt
+*.secret.txt
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Basil icon pack (large, not needed in repo)
+server/public/Basil_Icons/
+
+# Sass reference template
+Sass/
+
+# Obfuscated client-side bundles (generated at build time)
+server/public/*.obf.js
+
+# Module ZIP exports
+*.zip
+*.tar.gz

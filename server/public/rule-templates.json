@@ -1,0 +1,72 @@
+[
+  {
+    "id": "hide-element",
+    "label": "Hide element",
+    "trigger": "load",
+    "behavior": "augment",
+    "code": "element.style.display = 'none';\n"
+  },
+  {
+    "id": "replace-text",
+    "label": "Replace text content",
+    "trigger": "load",
+    "behavior": "augment",
+    "code": "element.textContent = 'New text here';\n"
+  },
+  {
+    "id": "redirect-click",
+    "label": "Redirect click",
+    "trigger": "click",
+    "behavior": "override",
+    "code": "event.preventDefault();\nwindow.location.href = 'https://example.com';\n"
+  },
+  {
+    "id": "add-css-class",
+    "label": "Add CSS class",
+    "trigger": "load",
+    "behavior": "augment",
+    "code": "element.classList.add('my-custom-class');\n"
+  },
+  {
+    "id": "inject-html",
+    "label": "Inject HTML",
+    "trigger": "load",
+    "behavior": "augment",
+    "code": "element.insertAdjacentHTML('beforeend', '<span>Hello</span>');\n"
+  },
+  {
+    "id": "prevent-submit",
+    "label": "Prevent form submit",
+    "trigger": "submit",
+    "behavior": "override",
+    "code": "event.preventDefault();\nconsole.log('Form submission blocked');\n"
+  },
+  {
+    "id": "track-click-analytics",
+    "label": "Track click (analytics)",
+    "trigger": "click",
+    "behavior": "augment",
+    "code": "// Send an analytics event when this element is clicked.\n// Replace with your analytics provider's call.\nconsole.log('tracked click on', element);\n// window.gtag && window.gtag('event', 'click', { label: element.textContent });\n"
+  },
+  {
+    "id": "intercept-fetch",
+    "label": "Intercept fetch response",
+    "trigger": "load",
+    "behavior": "augment",
+    "code": "// Patch window.fetch to intercept responses from this element's context.\nvar originalFetch = window.fetch;\nwindow.fetch = function () {\n  return originalFetch.apply(this, arguments).then(function (response) {\n    console.log('fetch intercepted:', arguments[0]);\n    return response;\n  });\n};\n"
+  },
+  {
+    "id": "override-viewport",
+    "label": "Override viewport meta",
+    "trigger": "load",
+    "behavior": "augment",
+    "code": "var meta = document.querySelector('meta[name=viewport]');\nif (!meta) {\n  meta = document.createElement('meta');\n  meta.name = 'viewport';\n  document.head.appendChild(meta);\n}\nmeta.content = 'width=device-width, initial-scale=1';\n"
+  },
+  {
+    "id": "custom-js",
+    "label": "Custom JavaScript",
+    "trigger": "load",
+    "behavior": "augment",
+    "code": "// `element` is the matched DOM node.\n// `event` is available for non-load triggers.\n// `ctx` exposes helper APIs.\nconsole.log('rule fired on', element);\n"
+  }
+]

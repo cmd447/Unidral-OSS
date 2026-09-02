@@ -1,0 +1,1655 @@
+
+.unidral-highlight {
+  outline: 2px solid #e5484d !important;
+  outline-offset: 1px !important;
+  background-image: linear-gradient(rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.12)) !important;
+  cursor: crosshair !important;
+}
+
+.unidral-track-highlight {
+  outline: 3px solid #5cba6a !important;
+  outline-offset: 3px !important;
+  background-image: linear-gradient(rgba(92, 186, 106, 0.12), rgba(92, 186, 106, 0.12)) !important;
+  border-radius: 4px !important;
+  transition: outline 0.3s ease, background-image 0.3s ease !important;
+}
+
+html.unidral-inspecting,
+html.unidral-inspecting * {
+  cursor: crosshair !important;
+}
+
+#unidral-root {
+  all: initial;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483000 !important;
+  pointer-events: none !important;
+  font-family: Montserrat, ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif !important;
+  color: #e8e8e8 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0.005em !important;
+}
+
+#unidral-root * {
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+}
+
+#unidral-root button,
+#unidral-root input,
+#unidral-root select,
+#unidral-root textarea {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #c8c8c8 !important;
+  background: #0f0f0f !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 4px !important;
+  padding: 6px 10px !important;
+  outline: none !important;
+  margin: 0 !important;
+  transition: border-color 0.12s ease, background 0.12s ease !important;
+}
+
+#unidral-root input:focus,
+#unidral-root select:focus,
+#unidral-root textarea:focus {
+  border-color: #e5484d !important;
+}
+
+#unidral-root button {
+  cursor: pointer !important;
+  border-radius: 4px !important;
+  transition: background 0.12s ease, border-color 0.12s ease, opacity 0.12s ease !important;
+}
+
+#unidral-root button:hover {
+  background: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+}
+
+#unidral-root .unidral-btn-primary {
+  background: #e5484d !important;
+  border-color: #e5484d !important;
+  color: #fff !important;
+}
+#unidral-root .unidral-btn-primary:hover {
+  background: #d23844 !important;
+  border-color: #d23844 !important;
+}
+
+#unidral-root .unidral-btn-success {
+  background: #1e3a1e !important;
+  border-color: #2d5a2d !important;
+  color: #5cba6a !important;
+}
+
+#unidral-root .unidral-btn-danger {
+  color: #e5484d !important;
+}
+#unidral-root .unidral-btn-danger:hover {
+  background: #3a1d1d !important;
+  border-color: #5a2d2d !important;
+  color: #e5484d !important;
+}
+
+#unidral-root .unidral-btn-sync {
+  background: #2d2640 !important;
+  border-color: #4a3a6a !important;
+  color: #a88ee0 !important;
+}
+
+#unidral-root .unidral-btn-preview {
+  background: #3a3210 !important;
+  border-color: #5a4a20 !important;
+  color: #e0c84a !important;
+}
+
+#unidral-root .unidral-btn-sm {
+  padding: 3px 8px !important;
+  font-size: 11px !important;
+}
+
+#unidral-root .unidral-btn-active,
+#unidral-root .unidral-active {
+  background: #e5484d !important;
+  border-color: #e5484d !important;
+  color: #fff !important;
+}
+
+.unidral-collapsed-bar {
+  pointer-events: auto !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #000 !important;
+  border: none !important;
+  border-top: 1px solid #1a1a1a !important;
+  border-radius: 0 !important;
+  padding: 7px 14px !important;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.6) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: background 0.12s ease !important;
+}
+
+.unidral-collapsed-bar:hover {
+  background: #0f0f0f !important;
+  border-color: #e5484d !important;
+}
+
+.unidral-collapsed-bar-hidden {
+  display: none !important;
+}
+
+.unidral-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #e5484d !important;
+  flex: none !important;
+}
+
+.unidral-dot.unidral-dirty {
+  background: #fbbf24 !important;
+}
+
+.unidral-title {
+  font-weight: 600 !important;
+  color: #e8e8e8 !important;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 180px !important;
+}
+
+.unidral-badge {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: #a3a3a3 !important;
+  border: 1px solid #2b2b2b !important;
+  background: #1e1e1e !important;
+  border-radius: 6px !important;
+  padding: 2px 8px !important;
+  flex: none !important;
+}
+
+.unidral-caret {
+  color: #7a7a7a !important;
+  font-size: 10px !important;
+  flex: none !important;
+}
+
+.unidral-panel {
+  pointer-events: auto !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 320px !important;
+  background: #000 !important;
+  border-top: none !important;
+  border-radius: 0 !important;
+  box-shadow: 0 -8px 24px -4px rgba(0,0,0,0.9) !important;
+  display: none !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.unidral-panel.unidral-panel-open {
+  display: flex !important;
+}
+
+.unidral-resize-handle {
+  height: 4px !important;
+  background: #000 !important;
+  cursor: ns-resize !important;
+  flex: none !important;
+  position: relative !important;
+}
+
+.unidral-resize-handle::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 40px !important;
+  height: 2px !important;
+  background: #2a2a2a !important;
+  border-radius: 999px !important;
+}
+
+.unidral-resize-handle:hover::after {
+  background: #e5484d !important;
+}
+
+.unidral-tab-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 8px !important;
+  background: #0a0a0a !important;
+  border-bottom: none !important;
+  flex: none !important;
+  height: 36px !important;
+}
+
+.unidral-tabs-left {
+  display: flex !important;
+  gap: 0 !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+}
+
+.unidral-tabs-left::-webkit-scrollbar {
+  display: none !important;
+}
+
+.unidral-tabs-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  flex: none !important;
+}
+
+.unidral-tab-btn {
+  border: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 8px 12px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #6a6a6a !important;
+  cursor: pointer !important;
+  transition: color 0.12s ease, background 0.12s ease !important;
+  white-space: nowrap !important;
+  flex: none !important;
+}
+
+.unidral-tab-btn:hover {
+  background: #1a1a1a !important;
+  border: none !important;
+  color: #d0d0d0 !important;
+}
+
+.unidral-tab-btn.unidral-tab-active {
+  background: transparent !important;
+  color: #e5484d !important;
+  border-bottom: 2px solid #e5484d !important;
+}
+
+.unidral-tab-icon-btn {
+  padding: 8px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.unidral-tab-icon-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+}
+
+.unidral-tab-icon-btn.unidral-tab-active {
+  border-bottom: 2px solid #e5484d !important;
+}
+
+.unidral-icon-btn {
+  border: none !important;
+  background: transparent !important;
+  border-radius: 4px !important;
+  padding: 6px !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #8a8a8a !important;
+  cursor: pointer !important;
+  transition: color 0.12s ease, background 0.12s ease !important;
+}
+
+.unidral-icon-btn:hover {
+  background: #1a1a1a !important;
+  color: #e5484d !important;
+  border: none !important;
+}
+
+.unidral-icon-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+}
+
+.unidral-panel-body {
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #000 !important;
+}
+
+.unidral-tab-content {
+  display: none !important;
+  flex: 1 !important;
+  overflow: hidden !important;
+  min-height: 0 !important;
+  background: #000 !important;
+  color: #c8c8c8 !important;
+}
+
+.unidral-tab-content-active {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  min-height: 0 !important;
+  flex: 1 !important;
+}
+
+.unidral-elements-layout {
+  display: flex !important;
+  flex: 1 !important;
+  overflow: hidden !important;
+  min-height: 0 !important;
+}
+
+.unidral-elements-left {
+  width: 45% !important;
+  min-width: 200px !important;
+  border-right: 1px solid #1a1a1a !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+
+.unidral-elements-right {
+  flex: 1 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+
+.unidral-dom-search-bar {
+  padding: 6px 8px !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  flex: none !important;
+}
+
+.unidral-dom-search {
+  width: 100% !important;
+  border-radius: 6px !important;
+}
+
+.unidral-elements-tree {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 4px 0 !important;
+  min-height: 0 !important;
+}
+
+.unidral-tree-node {
+  padding: 2px 8px !important;
+  font-size: 12px !important;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  color: #e8e8e8 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  transition: background 0.1s ease !important;
+}
+
+.unidral-tree-node:hover {
+  background: #212121 !important;
+}
+
+.unidral-tree-selected {
+  background: rgba(59, 130, 246, 0.15) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+
+.unidral-tree-modified .unidral-tree-tag {
+  color: #a88ee0 !important;
+}
+
+.unidral-tree-badge {
+  display: inline-block !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  background: #3d3358 !important;
+  color: #c8b8f0 !important;
+  border-radius: 4px !important;
+  padding: 0 4px !important;
+  margin-left: 4px !important;
+  font-family: Montserrat, sans-serif !important;
+}
+
+.unidral-tree-text {
+  color: #7a7a7a !important;
+  font-style: italic !important;
+}
+
+.unidral-elements-code-wrap {
+  flex: 1 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+
+.unidral-elements-code-header,
+.unidral-elements-props-header {
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: #a3a3a3 !important;
+  background: #1e1e1e !important;
+  border-bottom: 1px solid #242424 !important;
+  flex: none !important;
+}
+
+.unidral-elements-code {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 4px 0 !important;
+  min-height: 0 !important;
+}
+
+.unidral-code-lines {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  font-size: 12px !important;
+}
+
+.unidral-code-line {
+  display: flex !important;
+  white-space: pre !important;
+}
+
+.unidral-line-num {
+  color: #575757 !important;
+  text-align: right !important;
+  padding: 0 8px !important;
+  user-select: none !important;
+  min-width: 32px !important;
+  flex: none !important;
+}
+
+.unidral-line-content {
+  color: #e8e8e8 !important;
+}
+
+.unidral-elements-props-wrap {
+  max-height: 40% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-top: 1px solid #2b2b2b !important;
+  min-height: 0 !important;
+}
+
+.unidral-elements-props {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 4px 10px !important;
+  min-height: 0 !important;
+}
+
+.unidral-prop-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 3px 0 !important;
+  border-bottom: 1px solid #212121 !important;
+  font-size: 11px !important;
+}
+
+.unidral-prop-label {
+  color: #7a7a7a !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 10px !important;
+  flex: none !important;
+}
+
+.unidral-prop-value {
+  color: #e8e8e8 !important;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  font-size: 11px !important;
+  text-align: right !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.unidral-rules-selected {
+  padding: 8px 12px !important;
+  background: #2d2640 !important;
+  border-bottom: 1px solid #242424 !important;
+  flex: none !important;
+}
+
+.unidral-rules-selected-label {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #a88ee0 !important;
+}
+
+.unidral-rules-selected-selector {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  font-size: 12px !important;
+  color: #e8e8e8 !important;
+  font-weight: 600 !important;
+}
+
+.unidral-rules-section-title {
+  padding: 8px 12px 4px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: #a3a3a3 !important;
+  flex: none !important;
+}
+
+.unidral-rule-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  border-bottom: 1px solid #212121 !important;
+  transition: background 0.1s ease !important;
+  flex: none !important;
+}
+
+.unidral-rule-row:hover {
+  background: #212121 !important;
+}
+
+.unidral-rule-row.unidral-rule-off {
+  opacity: 0.5 !important;
+}
+
+.unidral-rule-info {
+  flex: 1 !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.unidral-rule-selector {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #5b9dff !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.unidral-rule-meta {
+  font-size: 10px !important;
+  color: #7a7a7a !important;
+}
+
+.unidral-rule-actions {
+  display: flex !important;
+  gap: 4px !important;
+  flex: none !important;
+}
+
+.unidral-new-rule-btn {
+  margin: 12px !important;
+  flex: none !important;
+}
+
+.unidral-inline-editor {
+  margin: 8px 12px 12px !important;
+  padding: 12px !important;
+  background: #1e1e1e !important;
+  border: 1px solid #2b2b2b !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  flex: none !important;
+}
+
+.unidral-editor-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #e5484d !important;
+  padding-bottom: 4px !important;
+  border-bottom: 1px solid #1a1a1a !important;
+}
+
+#unidral-root .unidral-inline-editor input,
+#unidral-root .unidral-inline-editor select,
+#unidral-root .unidral-inline-editor textarea {
+  width: 100% !important;
+  pointer-events: auto !important;
+  touch-action: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+#unidral-root .unidral-inline-editor {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#unidral-root .unidral-input {
+  width: 100% !important;
+  border-radius: 6px !important;
+}
+
+.unidral-field {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.unidral-field label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: #a3a3a3 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+.unidral-field-row {
+  display: flex !important;
+  gap: 10px !important;
+}
+
+.unidral-field-row > * {
+  flex: 1 !important;
+}
+
+.unidral-code-input {
+  width: 100% !important;
+  min-height: 120px !important;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  resize: vertical !important;
+  white-space: pre !important;
+  tab-size: 2 !important;
+  border-radius: 6px !important;
+  background: #1e1e1e !important;
+  color: #e8e8e8 !important;
+}
+
+.unidral-code-field-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 4px !important;
+}
+
+.unidral-code-type-toggle {
+  display: inline-flex !important;
+  border-radius: 5px !important;
+  overflow: hidden !important;
+  border: 1px solid #3a3a3a !important;
+}
+
+.unidral-code-type-btn {
+  padding: 3px 10px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  border: none !important;
+  background: #2a2a2a !important;
+  color: #888 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.unidral-code-type-btn.active {
+  background: #6c4dc7 !important;
+  color: #fff !important;
+}
+
+.unidral-code-type-btn:hover:not(.active) {
+  background: #333 !important;
+  color: #ccc !important;
+}
+
+.unidral-meta {
+  color: #7a7a7a !important;
+  font-size: 10px !important;
+  margin-top: 2px !important;
+}
+
+.unidral-sync-row {
+  padding: 8px 0 !important;
+}
+
+.unidral-sync-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #e8e8e8 !important;
+  cursor: pointer !important;
+}
+
+#unidral-root .unidral-sync-label input {
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.unidral-editor-actions {
+  display: flex !important;
+  gap: 8px !important;
+  justify-content: flex-end !important;
+  padding-top: 4px !important;
+}
+
+.unidral-sync-title {
+  padding: 10px 12px 6px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #e8e8e8 !important;
+  flex: none !important;
+}
+
+.unidral-sync-item {
+  padding: 10px 12px !important;
+  border-bottom: 1px solid #212121 !important;
+  flex: none !important;
+}
+
+.unidral-sync-item-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin-bottom: 6px !important;
+}
+
+.unidral-sync-selector {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #5b9dff !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.unidral-sync-status {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  padding: 2px 8px !important;
+  border-radius: 999px !important;
+  flex: none !important;
+}
+
+.unidral-sync-found {
+  background: #1e3a1e !important;
+  color: #5cba6a !important;
+}
+
+.unidral-sync-notfound {
+  background: #212121 !important;
+  color: #7a7a7a !important;
+}
+
+.unidral-sync-locations {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin-bottom: 6px !important;
+}
+
+.unidral-sync-locations-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: #7a7a7a !important;
+}
+
+.unidral-sync-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+}
+
+.unidral-sync-chip {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  padding: 3px 8px !important;
+  border-radius: 999px !important;
+  background: #2d2640 !important;
+  color: #a88ee0 !important;
+  text-decoration: none !important;
+  border: 1px solid #3d3358 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.unidral-sync-chip:hover {
+  background: #3d3358 !important;
+  border-color: #4d4078 !important;
+  color: #c8b8f0 !important;
+}
+
+.unidral-empty-inline {
+  font-size: 10px !important;
+  color: #7a7a7a !important;
+}
+
+.unidral-sync-item-footer {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+.unidral-console-toolbar {
+  display: flex !important;
+  gap: 6px !important;
+  padding: 6px 10px !important;
+  border-bottom: 1px solid #242424 !important;
+  flex: none !important;
+}
+
+.unidral-console-output {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  font-size: 12px !important;
+  padding: 4px 10px !important;
+  min-height: 0 !important;
+}
+
+.unidral-console-line {
+  display: flex !important;
+  gap: 8px !important;
+  padding: 2px 0 !important;
+  border-bottom: 1px solid #212121 !important;
+}
+
+.unidral-console-time {
+  color: #575757 !important;
+  flex: none !important;
+  font-size: 10px !important;
+}
+
+.unidral-console-level {
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  flex: none !important;
+  width: 50px !important;
+}
+
+.unidral-console-info .unidral-console-level { color: #569cd6 !important; }
+.unidral-console-warn .unidral-console-level { color: #d7ba7d !important; }
+.unidral-console-error .unidral-console-level { color: #e5484d !important; }
+.unidral-console-success .unidral-console-level { color: #6a9955 !important; }
+
+.unidral-console-msg {
+  color: #e8e8e8 !important;
+  word-break: break-word !important;
+}
+
+.unidral-console-info .unidral-console-msg { color: #e8e8e8 !important; }
+.unidral-console-warn .unidral-console-msg { color: #d7ba7d !important; }
+.unidral-console-error .unidral-console-msg { color: #e5484d !important; }
+.unidral-console-success .unidral-console-msg { color: #6a9955 !important; }
+
+.unidral-empty {
+  color: #7a7a7a !important;
+  font-size: 12px !important;
+  text-align: center !important;
+  padding: 20px 12px !important;
+}
+
+.unidral-toasts {
+  position: absolute !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  align-items: flex-end !important;
+  pointer-events: none !important;
+  z-index: 2147483001 !important;
+}
+
+.unidral-toast {
+  background: #0a0a0a !important;
+  border: none !important;
+  border-left: 2px solid #e5484d !important;
+  border-radius: 0 !important;
+  padding: 8px 14px !important;
+  max-width: 420px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #c8c8c8 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.9) !important;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace !important;
+  letter-spacing: 0.01em !important;
+}
+
+.unidral-toast.unidral-toast-error {
+  border-left-color: #e5484d !important;
+  color: #e5484d !important;
+  background: #1a0a0a !important;
+}
+
+.unidral-toast.unidral-toast-success {
+  border-left-color: #5cba6a !important;
+  color: #5cba6a !important;
+  background: #0a1a0a !important;
+}
+
+.unidral-quick-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 4px 10px !important;
+  background: #0a0a0a !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  flex: none !important;
+  height: 34px !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+}
+.unidral-quick-actions::-webkit-scrollbar { display: none !important; }
+
+.unidral-qa-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  border: 1px solid #1a1a1a !important;
+  background: #0f0f0f !important;
+  border-radius: 6px !important;
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #b0b0b0 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  flex: none !important;
+  transition: all 0.12s ease !important;
+}
+
+.unidral-qa-btn:hover {
+  background: #212121 !important;
+  border-color: #4a4a4a !important;
+  color: #e8e8e8 !important;
+}
+
+.unidral-qa-btn:active {
+  transform: scale(0.96) !important;
+}
+
+.unidral-qa-btn.unidral-qa-active {
+  background: #e5484d !important;
+  border-color: #e5484d !important;
+  color: #fff !important;
+}
+
+.unidral-qa-btn svg {
+  width: 13px !important;
+  height: 13px !important;
+  flex: none !important;
+}
+
+.unidral-qa-divider {
+  width: 1px !important;
+  height: 18px !important;
+  background: #333 !important;
+  flex: none !important;
+  margin: 0 2px !important;
+}
+
+.unidral-qa-shortcut {
+  font-size: 9px !important;
+  color: #575757 !important;
+  margin-left: 4px !important;
+  border: 1px solid #333 !important;
+  border-radius: 3px !important;
+  padding: 0 3px !important;
+}
+
+.unidral-shortcut-hint {
+  position: absolute !important;
+  top: 6px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: #1e1e1e !important;
+  border: 1px solid #2b2b2b !important;
+  border-radius: 6px !important;
+  padding: 4px 10px !important;
+  font-size: 10px !important;
+  color: #7a7a7a !important;
+  pointer-events: none !important;
+  z-index: 2147483002 !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.unidral-shortcut-hint.unidral-hint-visible {
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+
+  .unidral-collapsed-bar {
+    padding: 6px 12px !important;
+    gap: 6px !important;
+  }
+
+  .unidral-title {
+    max-width: 100px !important;
+    font-size: 11px !important;
+  }
+
+  .unidral-badge {
+    display: none !important;
+  }
+
+  .unidral-panel {
+    border-radius: 16px 16px 0 0 !important;
+    height: 70vh !important;
+    max-height: 70vh !important;
+  }
+
+  .unidral-tab-bar {
+    padding: 0 6px !important;
+    height: 44px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+  .unidral-tab-bar::-webkit-scrollbar { display: none !important; }
+
+  .unidral-tabs-left {
+    gap: 0 !important;
+    flex: 1 !important;
+  }
+
+  .unidral-tab-btn {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    flex: none !important;
+  }
+
+  .unidral-tabs-right {
+    gap: 4px !important;
+    flex: none !important;
+  }
+
+  .unidral-inspect-btn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+
+  .unidral-quick-actions {
+    padding: 4px 6px !important;
+    gap: 3px !important;
+  }
+
+  .unidral-qa-btn {
+    padding: 5px 8px !important;
+    font-size: 10.5px !important;
+  }
+
+  .unidral-qa-shortcut {
+    display: none !important;
+  }
+
+  .unidral-elements-layout {
+    flex-direction: column !important;
+  }
+
+  .unidral-elements-left {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-height: 40% !important;
+    border-right: none !important;
+    border-bottom: 1px solid #242424 !important;
+  }
+
+  .unidral-toasts {
+    right: 10px !important;
+    left: 10px !important;
+    bottom: 80px !important;
+    align-items: stretch !important;
+  }
+
+  .unidral-toast {
+    max-width: 100% !important;
+  }
+
+  .unidral-resize-handle {
+    height: 10px !important;
+  }
+
+  .unidral-resize-handle::after {
+    width: 60px !important;
+    height: 4px !important;
+  }
+}
+
+.unidral-tab-content-active {
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+}
+
+@media (max-width: 768px) {
+  #unidral-root button {
+    min-height: 36px !important;
+  }
+
+  #unidral-root .unidral-btn-sm {
+    min-height: 32px !important;
+    padding: 6px 12px !important;
+  }
+
+  #unidral-root input,
+  #unidral-root select,
+  #unidral-root textarea {
+    min-height: 36px !important;
+    font-size: 16px !important; 
+  }
+
+  #unidral-root * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .unidral-tab-content-active {
+    will-change: scroll-position !important;
+    overscroll-behavior: contain !important;
+  }
+
+  .unidral-panel-body {
+    contain: layout paint style !important;
+  }
+
+  .unidral-collapsed-bar {
+    min-height: 40px !important;
+  }
+
+  .unidral-inspect-btn,
+  .unidral-close-btn {
+    min-width: 40px !important;
+    min-height: 36px !important;
+  }
+
+  .unidral-rule-row {
+    padding: 8px 6px !important;
+    min-height: 44px !important;
+  }
+
+  .unidral-rule-actions {
+    gap: 4px !important;
+  }
+
+  .unidral-code-input {
+    min-height: 120px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+.unidral-sub-tab-bar {
+  display: flex !important;
+  gap: 0 !important;
+  padding: 0 8px !important;
+  background: #0a0a0a !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  flex: none !important;
+  height: 30px !important;
+  align-items: center !important;
+}
+
+.unidral-sub-tab-btn {
+  border: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #6a6a6a !important;
+  cursor: pointer !important;
+  transition: color 0.12s ease !important;
+  white-space: nowrap !important;
+}
+
+.unidral-sub-tab-btn:hover {
+  background: #1a1a1a !important;
+  color: #d0d0d0 !important;
+}
+
+.unidral-sub-tab-btn.unidral-sub-tab-active {
+  background: transparent !important;
+  color: #e5484d !important;
+  border-bottom: 2px solid #e5484d !important;
+}
+
+.unidral-sub-tab-content {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.unidral-section-title,
+.unidral-files-section-title {
+  padding: 8px 12px 4px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: #e5484d !important;
+  flex: none !important;
+}
+
+.unidral-override-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  border-bottom: 1px solid #0f0f0f !important;
+  flex: none !important;
+}
+
+.unidral-override-fields {
+  flex: 1 !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.unidral-override-row .unidral-field {
+  gap: 2px !important;
+}
+
+.unidral-override-row .unidral-field label {
+  font-size: 9px !important;
+  color: #6a6a6a !important;
+}
+
+.unidral-file-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 6px 12px !important;
+  border-bottom: 1px solid #0a0a0a !important;
+  flex: none !important;
+  min-height: 44px !important;
+  transition: background 0.1s ease !important;
+}
+
+.unidral-file-row:hover {
+  background: #0f0f0f !important;
+}
+
+.unidral-file-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.unidral-file-icon {
+  width: 20px !important;
+  height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: none !important;
+  color: #6a6a6a !important;
+}
+
+.unidral-file-icon svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.unidral-file-icon-img { color: #e5484d !important; }
+.unidral-file-icon-css { color: #4a9eff !important; }
+.unidral-file-icon-js { color: #e0c84a !important; }
+.unidral-file-icon-html { color: #e8964a !important; }
+
+.unidral-file-thumb {
+  width: 36px !important;
+  height: 36px !important;
+  object-fit: cover !important;
+  border-radius: 3px !important;
+  flex: none !important;
+  background: #0f0f0f !important;
+  border: 1px solid #1a1a1a !important;
+}
+
+.unidral-file-thumb-wrap {
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: none !important;
+  background: #0f0f0f !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  padding: 2px !important;
+}
+
+.unidral-file-thumb-wrap svg {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+.unidral-file-label {
+  font-size: 12px !important;
+  color: #c8c8c8 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.unidral-file-meta {
+  font-size: 10px !important;
+  color: #4a4a4a !important;
+  white-space: nowrap !important;
+  flex: none !important;
+}
+
+.unidral-file-actions {
+  display: flex !important;
+  gap: 2px !important;
+  flex: none !important;
+  opacity: 0.4 !important;
+  transition: opacity 0.12s ease !important;
+}
+
+.unidral-file-row:hover .unidral-file-actions {
+  opacity: 1 !important;
+}
+
+.unidral-file-btn {
+  border: none !important;
+  background: transparent !important;
+  border-radius: 4px !important;
+  padding: 5px !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #8a8a8a !important;
+  cursor: pointer !important;
+  transition: color 0.12s ease, background 0.12s ease !important;
+}
+
+.unidral-file-btn:hover {
+  background: #1a1a1a !important;
+  color: #e5484d !important;
+}
+
+.unidral-file-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.unidral-file-btn-active {
+  color: #5cba6a !important;
+}
+
+.unidral-file-btn-danger:hover {
+  color: #e5484d !important;
+  background: #1a0a0a !important;
+}
+
+.unidral-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,0.7) !important;
+  z-index: 2147483100 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+}
+
+.unidral-modal {
+  background: #0a0a0a !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  max-width: 420px !important;
+  width: 90% !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  box-shadow: 0 20px 60px -10px rgba(0,0,0,0.9) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.unidral-modal-wide {
+  max-width: 700px !important;
+  width: 95% !important;
+}
+
+.unidral-code-editor {
+  width: 100% !important;
+  min-height: 300px !important;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  background: #000 !important;
+  color: #c8c8c8 !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 4px !important;
+  padding: 10px !important;
+  resize: vertical !important;
+  outline: none !important;
+  tab-size: 2 !important;
+}
+
+.unidral-code-editor:focus {
+  border-color: #e5484d !important;
+}
+
+.unidral-image-preview {
+  min-height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #0f0f0f !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 4px !important;
+  padding: 8px !important;
+}
+
+.unidral-tabs-left {
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+}
+
+.unidral-tabs-left::-webkit-scrollbar {
+  display: none !important;
+}
+
+.unidral-tab-btn {
+  white-space: nowrap !important;
+  flex: none !important;
+}
+
+#unidral-root.unidral-mobile .unidral-collapsed-bar {
+  bottom: env(safe-area-inset-bottom, 0px) !important;
+  padding: 6px 12px !important;
+  gap: 6px !important;
+  min-height: 40px !important;
+  overflow: hidden !important;
+}
+
+#unidral-root.unidral-mobile .unidral-title {
+  max-width: 100px !important;
+  font-size: 11px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#unidral-root.unidral-mobile .unidral-badge {
+  display: none !important;
+}
+
+#unidral-root.unidral-mobile .unidral-panel {
+  border-radius: 16px 16px 0 0 !important;
+  height: 70vh !important;
+  max-height: 70vh !important;
+  max-width: 100vw !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+}
+
+#unidral-root.unidral-mobile .unidral-tab-bar {
+  padding: 0 6px !important;
+  height: 44px !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+}
+
+#unidral-root.unidral-mobile .unidral-tab-bar::-webkit-scrollbar {
+  display: none !important;
+}
+
+#unidral-root.unidral-mobile .unidral-tabs-left {
+  gap: 0 !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+#unidral-root.unidral-mobile .unidral-tab-btn {
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  flex: none !important;
+}
+
+#unidral-root.unidral-mobile .unidral-tabs-right {
+  gap: 4px !important;
+  flex: none !important;
+}
+
+#unidral-root.unidral-mobile .unidral-inspect-btn,
+#unidral-root.unidral-mobile .unidral-icon-btn {
+  min-width: 40px !important;
+  min-height: 36px !important;
+}
+
+#unidral-root.unidral-mobile .unidral-quick-actions {
+  padding: 4px 6px !important;
+  gap: 3px !important;
+  overflow-x: auto !important;
+}
+
+#unidral-root.unidral-mobile .unidral-qa-btn {
+  padding: 5px 8px !important;
+  font-size: 10.5px !important;
+}
+
+#unidral-root.unidral-mobile .unidral-qa-shortcut {
+  display: none !important;
+}
+
+#unidral-root.unidral-mobile .unidral-elements-layout {
+  flex-direction: column !important;
+}
+
+#unidral-root.unidral-mobile .unidral-elements-left {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-height: 40% !important;
+  border-right: none !important;
+  border-bottom: 1px solid #242424 !important;
+}
+
+#unidral-root.unidral-mobile .unidral-toasts {
+  right: 10px !important;
+  left: 10px !important;
+  bottom: 80px !important;
+  align-items: stretch !important;
+}
+
+#unidral-root.unidral-mobile .unidral-toast {
+  max-width: 100% !important;
+}
+
+#unidral-root.unidral-mobile .unidral-resize-handle {
+  height: 10px !important;
+}
+
+#unidral-root.unidral-mobile .unidral-resize-handle::after {
+  width: 60px !important;
+  height: 4px !important;
+}
+
+#unidral-root.unidral-mobile button {
+  min-height: 36px !important;
+}
+
+#unidral-root.unidral-mobile .unidral-btn-sm {
+  min-height: 32px !important;
+  padding: 6px 12px !important;
+}
+
+#unidral-root.unidral-mobile input,
+#unidral-root.unidral-mobile select,
+#unidral-root.unidral-mobile textarea {
+  min-height: 36px !important;
+  font-size: 16px !important;
+}
+
+#unidral-root.unidral-mobile * {
+  -webkit-overflow-scrolling: touch;
+}
+
+#unidral-root.unidral-mobile .unidral-tab-content-active {
+  will-change: scroll-position !important;
+  overscroll-behavior: contain !important;
+}
+
+#unidral-root.unidral-mobile .unidral-rule-row {
+  padding: 8px 6px !important;
+  min-height: 44px !important;
+}
+
+#unidral-root.unidral-mobile .unidral-rule-actions {
+  gap: 4px !important;
+}
