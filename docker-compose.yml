@@ -1,0 +1,90 @@
+services:
+  unidral-server:
+    build:
+      context: ./server
+    container_name: unidral-server
+    restart: unless-stopped
+    environment:
+      PORT: 4000
+      HOST: 0.0.0.0
+      NODE_ENV: production
+      BASE_DOMAIN: ${BASE_DOMAIN:-example.com}
+      EXTRA_BASE_DOMAINS: ${EXTRA_BASE_DOMAINS:-}
+      RESERVED_SUBDOMAINS: ${RESERVED_SUBDOMAINS:-dashboard,www,api}
+      FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID:-}
+      FIREBASE_SERVICE_ACCOUNT_JSON: ${FIREBASE_SERVICE_ACCOUNT_JSON:-}
+      FIRESTORE_EMULATOR_HOST: ${FIRESTORE_EMULATOR_HOST:-}
+      FIRESTORE_SITE_INDEX_COLLECTION: ${FIRESTORE_SITE_INDEX_COLLECTION:-site_index}
+      FIRESTORE_SETTINGS_COLLECTION: ${FIRESTORE_SETTINGS_COLLECTION:-settings}
+      FIRESTORE_SETTINGS_DOC: ${FIRESTORE_SETTINGS_DOC:-config}
+      FIRESTORE_DOMAINS_COLLECTION: ${FIRESTORE_DOMAINS_COLLECTION:-domains}
+      FIRESTORE_DOMAIN_LOGS_COLLECTION: ${FIRESTORE_DOMAIN_LOGS_COLLECTION:-domain_logs}
+      ALLOW_PRIVATE_TARGETS: ${ALLOW_PRIVATE_TARGETS:-}
+      MAX_HTML_BYTES: ${MAX_HTML_BYTES:-}
+      CF_API_TOKEN: ${CF_API_TOKEN:-}
+      CF_ACCOUNT_ID: ${CF_ACCOUNT_ID:-}
+      VPS_IP: ${VPS_IP:-}
+      VPS_IPV6: ${VPS_IPV6:-}
+      PROPAGATION_TIMEOUT_MS: ${PROPAGATION_TIMEOUT_MS:-600000}
+      PROPAGATION_INTERVAL_MS: ${PROPAGATION_INTERVAL_MS:-30000}
+    ports:
+      - "4000:4000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${UNIDRAL_REPO_PATH:-.}:/repo
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ${CLOUDFLARE_CREDENTIALS:-${HOME}/.secrets/cloudflare.ini}:${CLOUDFLARE_CREDENTIALS:-${HOME}/.secrets/cloudflare.ini}:ro
+      - ${UNIDRAL_REPO_PATH:-.}/server/modules:/app/modules
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:4000/__unidral/health',(r)=>{let d='';r.on('data',c=>d+=c);r.on('end',()=>process.exit(r.statusCode===200?0:1))}).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  unidral-dashboard:
+    build:
+      context: ./dashboard
+      args:
+        NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE:-http://localhost:4000/__unidral/api}
+        NEXT_PUBLIC_BASE_DOMAIN: ${BASE_DOMAIN:-example.com}
+        NEXT_PUBLIC_BASE_DOMAINS: ${BASE_DOMAIN:-example.com}${EXTRA_BASE_DOMAINS:+,${EXTRA_BASE_DOMAINS}}
+    container_name: unidral-dashboard
+    restart: unless-stopped
+    depends_on:
+      - unidral-server
+    ports:
+      - "3000:3000"
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: unidral-nginx:latest
+    container_name: unidral-nginx
+    restart: unless-stopped
+    profiles: ["production"]
+    depends_on:
+      unidral-server:
+        condition: service_started
+      unidral-dashboard:
+        condition: service_started
+    environment:
+      BASE_DOMAIN: ${BASE_DOMAIN:-example.com}
+      EXTRA_BASE_DOMAINS: ${EXTRA_BASE_DOMAINS:-}
+      DASHBOARD_SUBDOMAIN: ${DASHBOARD_SUBDOMAIN:-dashboard}
+      API_SUBDOMAIN: ${API_SUBDOMAIN:-api}
+    entrypoint: ["/docker-entrypoint.sh"]
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/unidral.conf.template:/etc/nginx/templates/unidral.conf.template:ro
+      - ./nginx/docker-entrypoint.sh:/docker-entrypoint.sh:ro
+      - ./nginx/404.html:/usr/share/nginx/html/404.html:ro
+      - /etc/letsencrypt:/etc/letsencrypt
+      - certbot-www:/var/www/certbot
+      - ${UNIDRAL_REPO_PATH:-.}:/repo:ro
+
+volumes:
+  certbot-www:
