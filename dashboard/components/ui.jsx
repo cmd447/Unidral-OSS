@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { ChevronDown, ExternalLink, Trash2, CheckCircle, AlertCircle, AlertTriangle, Info, X } from "lucide-react";
+import { ChevronDown, ExternalLink, Trash2, CheckCircle, AlertCircle, AlertTriangle, Info, X, ArrowUpRight } from "lucide-react";
 import { useScrollLock } from "@/components/use-media-query";
 
 export function cx(...parts) {
@@ -141,18 +141,55 @@ export function GhostSelect({ value, options, onChange, align = "right", classNa
 
 
 export function Card({ children, className = "" }) {
-  const hasOverflowOverride = /overflow-(visible|auto|scroll|y-visible|y-auto|y-scroll|x-visible|x-auto|x-scroll)/.test(
-    className
-  );
   return (
-    <div
+    <div className={cx("border-t border-line", className)}>
+      {children}
+    </div>
+  );
+}
+
+export function LinkNav({ href, children, className = "", ...rest }) {
+  return (
+    <Link
+      href={href}
       className={cx(
-        "rounded-[12px] border border-line bg-surface",
-        hasOverflowOverride ? "" : "overflow-hidden",
+        "group inline-flex items-center gap-[4px] text-[12.5px] font-medium text-fg transition-colors hover:text-accent",
         className
       )}
+      {...rest}
     >
-      {children}
+      <span className="border-b border-line pb-[1px] transition-colors group-hover:border-accent">
+        {children}
+      </span>
+      <ArrowUpRight className="h-[12px] w-[12px] text-fg4 transition-all duration-200 group-hover:translate-x-[1px] group-hover:-translate-y-[1px] group-hover:text-accent" strokeWidth={1.8} />
+    </Link>
+  );
+}
+
+export function SegmentedNav({ options, value, onChange, className = "" }) {
+  return (
+    <div className={cx("flex flex-wrap gap-x-[20px] gap-y-[6px] border-b border-line", className)}>
+      {options.map((opt) => {
+        const val = typeof opt === "string" ? opt : opt.value;
+        const label = typeof opt === "string" ? opt : opt.label;
+        const active = value === val;
+        return (
+          <button
+            key={val}
+            type="button"
+            onClick={() => onChange?.(val)}
+            className={cx(
+              "relative pb-[8px] text-[12.5px] font-medium transition-colors",
+              active ? "text-fg" : "text-fg3 hover:text-fg"
+            )}
+          >
+            {label}
+            {active ? (
+              <span className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-accent" />
+            ) : null}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -194,12 +231,14 @@ export function BlueButton({ children, className = "", ...props }) {
     <button
       type="button"
       className={cx(
-        "flex h-[30px] items-center gap-[6px] rounded-[7px] bg-accent px-[13px] text-[12.5px] font-semibold text-white transition-all duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-accent-hover active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50",
+        "group inline-flex h-[28px] items-center gap-[6px] text-[12.5px] font-medium text-fg transition-opacity duration-200 hover:opacity-75 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-40",
         className
       )}
       {...props}
     >
-      {children}
+      <span className="border-b-2 border-accent pb-[2px] transition-colors group-hover:border-accent-hover">
+        {children}
+      </span>
     </button>
   );
 }
@@ -209,12 +248,14 @@ export function GhostButton({ children, className = "", ...props }) {
     <button
       type="button"
       className={cx(
-        "flex h-[30px] items-center gap-[6px] rounded-[7px] border border-stroke bg-raised px-[12px] text-[12.5px] font-semibold text-fg2 transition-all duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-hover hover:text-fg active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50",
+        "group inline-flex h-[28px] items-center gap-[6px] text-[12.5px] font-medium text-fg3 transition-colors duration-200 hover:text-fg disabled:cursor-not-allowed disabled:opacity-40",
         className
       )}
       {...props}
     >
-      {children}
+      <span className="border-b border-line pb-[2px] transition-colors group-hover:border-fg3">
+        {children}
+      </span>
     </button>
   );
 }
@@ -225,11 +266,11 @@ export function Badge({ tone, children, className = "" }) {
   return (
     <span
       className={cx(
-        "rounded-[4px] px-[5px] py-[1px] text-[10.5px] font-medium leading-[14px]",
+        "text-[10px] font-medium uppercase tracking-[0.04em]",
         className,
         tone === "new"
-          ? "bg-success/10 text-success"
-          : "bg-pressed text-fg3"
+          ? "text-fg2"
+          : "text-fg4"
       )}
     >
       {children}
@@ -400,20 +441,23 @@ export function SiteThumbnail({ url, subdomain, targetUrl, className = "" }) {
 
   if (loading) {
     return (
-      <div className={cx("flex items-center justify-center bg-surface", className)}>
-        <div className="h-[20px] w-[20px] animate-spin rounded-full border-[2px] border-stroke border-t-accent" />
+      <div className={cx("relative overflow-hidden bg-panel", className)}>
+        <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-raised via-panel to-raised" />
       </div>
     );
   }
 
   if (failed || !src) {
-    
     return (
       <div className={cx("relative flex items-center justify-center overflow-hidden bg-panel", className)}>
-        <div className="absolute inset-0 opacity-[0.04]" style={{
-          backgroundImage: "radial-gradient(circle at 30% 20%, #fff 0%, transparent 50%), radial-gradient(circle at 70% 80%, #fff 0%, transparent 50%)",
-        }} />
-        <Favicon url={targetUrl || url} subdomain={subdomain} size={56} className="relative" />
+        <div
+          className="absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage: "radial-gradient(circle, var(--dotted-underline, #2a2d33) 1px, transparent 1px)",
+            backgroundSize: "10px 10px",
+          }}
+        />
+        <Favicon url={targetUrl || url} subdomain={subdomain} size={34} className="relative" />
       </div>
     );
   }
@@ -433,129 +477,96 @@ export function SiteThumbnail({ url, subdomain, targetUrl, className = "" }) {
 
 
 export function SiteCard({ site, healthStatus, ruleCount, siteUrl, onToggleLive, onDelete, isSessionSite = false }) {
-  const [tapped, setTapped] = React.useState(false);
   const isLive = site.mode === "live";
   const displayMode = site.session_capture_config?.display_mode || "redirect";
   const isBitb = isSessionSite && displayMode === "bitb";
 
-  const handleCardClick = (e) => {
-    
-    if (!tapped) {
-      e.preventDefault();
-      setTapped(true);
-      return;
-    }
-  };
-
   return (
-    <div
-      className={cx(
-        "group relative overflow-hidden rounded-[10px] border bg-surface transition-all",
-        tapped ? "border-accent" : "border-line hover:border-stroke"
-      )}
-      onMouseLeave={() => setTapped(false)}
-    >
-      {}
-      <Link
-        href={`/sites/${site.id}`}
-        onClick={handleCardClick}
-        className="block"
-      >
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-panel">
-          <SiteThumbnail
-            url={siteUrl}
-            subdomain={site.subdomain}
-            targetUrl={site.target_url}
-            className="h-full w-full"
-          />
-
-          {}
-          <div
-            className={cx(
-              "absolute inset-0 flex items-center justify-center gap-[8px] bg-black/70 backdrop-blur-[2px] transition-opacity",
-              tapped ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-            )}
-          >
-            <a
-              href={siteUrl}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              title="Open site in a new tab"
-              className="flex h-[32px] items-center gap-[5px] rounded-[6px] bg-pressed px-[12px] text-[12px] font-medium text-fg transition-colors hover:bg-hover"
-            >
-              <ExternalLink className="h-[13px] w-[13px]" strokeWidth={1.8} />
-              Open
-            </a>
-            <button
-              type="button"
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onToggleLive(); }}
-              title={isLive ? "Switch this site to dev mode" : "Switch this site to live mode"}
-              className="flex h-[32px] items-center gap-[5px] rounded-[6px] bg-pressed px-[12px] text-[12px] font-medium text-fg transition-colors hover:bg-hover"
-            >
-              {isLive ? "Set Dev" : "Set Live"}
-            </button>
-            <button
-              type="button"
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onDelete(); }}
-              title="Delete this site and all its rules"
-              className="flex h-[32px] w-[32px] items-center justify-center rounded-[6px] bg-pressed text-fg transition-colors hover:bg-errorBorder hover:text-error"
-            >
-              <Trash2 className="h-[14px] w-[14px]" strokeWidth={1.8} />
-            </button>
+    <div className="group relative border-b border-line">
+      <Link href={`/sites/${site.id}`} className="flex items-center gap-[14px] py-[11px] pl-[2px] pr-[8px]">
+        <div className="relative w-[92px] shrink-0 overflow-hidden rounded-[3px] border border-line bg-panel sm:w-[104px]">
+          <div className="aspect-[16/10]">
+            <SiteThumbnail
+              url={siteUrl}
+              subdomain={site.subdomain}
+              targetUrl={site.target_url}
+              className="h-full w-full"
+            />
           </div>
+        </div>
 
-          {}
-          <div className="absolute right-[8px] top-[8px] flex items-center gap-[4px]">
-            <span className={cx(
-              "rounded-[4px] px-[6px] py-[2px] text-[9.5px] font-medium uppercase backdrop-blur-[2px]",
-              isLive ? "bg-accent/90 text-white" : "bg-black/60 text-fg2"
-            )}>
-              {isLive ? "Live" : "Dev"}
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline gap-[5px]">
+            <span className="min-w-0 truncate text-[13px] font-medium text-fg">
+              {site.subdomain}
+            </span>
+            {site.base_domain ? (
+              <span className="min-w-0 truncate text-[11px] text-fg4">.{site.base_domain}</span>
+            ) : null}
+          </div>
+          <div className="mt-[2px] truncate text-[11px] text-fg4">
+            {String(site.target_url || "").replace(/^https?:\/\//, "")}
+          </div>
+          <div className="mt-[5px] flex flex-wrap items-center gap-x-[12px] gap-y-[2px]">
+            <span className="text-[10px] font-medium uppercase tracking-[0.04em] text-fg4">
+              {ruleCount} {ruleCount === 1 ? "rule" : "rules"}
             </span>
             {isSessionSite ? (
-              <span className={cx(
-                "rounded-[4px] px-[6px] py-[2px] text-[9.5px] font-medium uppercase backdrop-blur-[2px]",
-                isBitb ? "bg-accent/90 text-white" : "bg-black/60 text-fg2"
-              )}>
-                {isBitb ? "BITB" : "Normal"}
-              </span>
-            ) : null}
-            {isSessionSite && site.session_capture_config?.module_id ? (
-              <span className="rounded-[4px] bg-black/60 px-[6px] py-[2px] text-[9.5px] font-medium uppercase text-[#3dd68c] backdrop-blur-[2px]">
-                Uni-Con
+              <span className="text-[10px] font-medium uppercase tracking-[0.04em] text-fg4">
+                {isBitb ? "BITB" : "Capture"}
               </span>
             ) : null}
           </div>
-
-          {}
-          <div className="absolute bottom-[8px] left-[8px]">
-            <span className={cx(
-              "rounded-[4px] px-[6px] py-[2px] text-[9.5px] font-medium uppercase backdrop-blur-[2px]",
-              healthStatus === "up" ? "bg-black/60 text-fg" : healthStatus === "down" ? "bg-accent/90 text-white" : "bg-black/60 text-fg4"
-            )}>
-              {healthStatus}
-            </span>
-          </div>
         </div>
-      </Link>
 
-      {}
-      <Link href={`/sites/${site.id}`} className="block px-[12px] py-[10px]">
-        <div className="flex items-center gap-[8px]">
-          <Favicon url={site.target_url} subdomain={site.subdomain} size={16} />
-          <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-fg">
-            {site.subdomain}
+        <div className="hidden shrink-0 items-center gap-[16px] sm:flex">
+          <span
+            className={cx(
+              "w-[32px] text-right text-[10px] font-medium uppercase tracking-[0.04em]",
+              isLive ? "text-accent" : "text-fg4"
+            )}
+          >
+            {isLive ? "Live" : "Dev"}
           </span>
-          <span className="shrink-0 text-[10.5px] text-fg4">
-            {ruleCount} {ruleCount === 1 ? "rule" : "rules"}
+          <span
+            className={cx(
+              "w-[44px] text-right text-[10px] font-medium uppercase tracking-[0.04em]",
+              healthStatus === "up" ? "text-fg3" : healthStatus === "down" ? "text-error" : "text-fg4"
+            )}
+          >
+            {healthStatus}
           </span>
         </div>
-        {site.base_domain ? (
-          <div className="mt-[3px] truncate text-[11px] text-fg4">
-            .{site.base_domain}
-          </div>
-        ) : null}
+
+        <div className="flex shrink-0 items-center gap-[12px] pr-[2px] opacity-0 transition-opacity duration-150 group-hover:opacity-100 max-sm:opacity-100">
+          <a
+            href={siteUrl}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            title="Open site in a new tab"
+            className="flex h-[24px] items-center gap-[3px] text-[11.5px] text-fg4 transition-colors hover:text-fg"
+          >
+            Open
+            <ArrowUpRight className="h-[12px] w-[12px]" strokeWidth={1.8} />
+          </a>
+          <button
+            type="button"
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onToggleLive(); }}
+            title={isLive ? "Switch this site to dev mode" : "Switch this site to live mode"}
+            className="flex h-[24px] items-center text-[11.5px] text-fg4 transition-colors hover:text-fg"
+          >
+            {isLive ? "Set dev" : "Set live"}
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); onDelete(); }}
+            title="Delete this site and all its rules"
+            className="flex h-[24px] w-[24px] items-center justify-center text-fg4 transition-colors hover:text-error"
+          >
+            <Trash2 className="h-[13px] w-[13px]" strokeWidth={1.8} />
+          </button>
+        </div>
       </Link>
     </div>
   );

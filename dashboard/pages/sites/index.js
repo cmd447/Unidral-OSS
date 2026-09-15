@@ -202,7 +202,7 @@ export default function SitesPage() {
           </div>
 
           {error ? (
-            <div className="mb-[12px] rounded-[8px] border border-errorBorder bg-errorSurface px-[14px] py-[10px] text-[12.5px] text-error">
+            <div className="mb-[12px] border-l-2 border-error bg-errorSurface/30 px-[14px] py-[10px] text-[12.5px] text-error">
               {error}
             </div>
           ) : null}
@@ -222,7 +222,7 @@ export default function SitesPage() {
 
               <form onSubmit={handleCreate} className="space-y-[14px]">
                 {}
-                <div className="rounded-[8px] border border-line bg-panel p-[14px]">
+                <div className="border-t border-line pt-[14px]">
                   <div className="mb-[10px] text-[11px] font-semibold uppercase tracking-wide text-fg4">
                     Identity
                   </div>
@@ -296,7 +296,7 @@ export default function SitesPage() {
                 </div>
 
                 {}
-                <div className="rounded-[8px] border border-line bg-surface p-[14px]">
+                <div className="border-t border-line pt-[14px]">
                   <div className="mb-[10px] text-[11px] font-semibold uppercase tracking-wide text-fg4">
                     Behavior
                   </div>
@@ -330,7 +330,7 @@ export default function SitesPage() {
                     {formMode === "dev" ? "Injects a debugging toolbar into the page so you can inspect the proxy in real time. Never share dev links with targets." : "Clean proxy with no toolbar — indistinguishable from a normal site. Use this when sharing links with real visitors."}
                   </div>
 
-                  <div className="mt-[12px] flex items-center justify-between rounded-[8px] border border-line bg-raised px-[12px] py-[10px]">
+                  <div className="mt-[12px] flex items-center justify-between border-t border-line pt-[10px]">
                     <div>
                       <div className="text-[12.5px] font-medium text-fg2">Wildcard mode</div>
                       <p className="mt-[2px] text-[11.5px] text-fg4">Proxy all subdomains of the target (e.g. api.mysite.domain). Useful when the target site loads assets from subdomains.</p>
@@ -340,7 +340,7 @@ export default function SitesPage() {
                 </div>
 
                 {}
-                <div className="rounded-[8px] border border-line bg-panel p-[14px]">
+                <div className="border-t border-line pt-[14px]">
                   <div className="mb-[10px] text-[11px] font-semibold uppercase tracking-wide text-fg4">
                     Network
                   </div>
@@ -429,7 +429,7 @@ export default function SitesPage() {
               </BlueButton>
             </Card>
           ) : (
-            <div className="grid grid-cols-1 gap-[14px] px-[8px] sm:grid-cols-2 lg:grid-cols-3">
+            <div className="px-[8px]">
               {sites.map((site) => {
                 const hs = health[site.id]?.status || "unknown";
                 const ruleCount = rulesBySite[site.id] ?? site.rule_count ?? 0;

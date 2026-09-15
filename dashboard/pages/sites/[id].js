@@ -446,7 +446,7 @@ export default function SiteDetailPage() {
               <SectionHeading className="mb-[16px]">Rules</SectionHeading>
 
               {/* Rule form */}
-              <form onSubmit={handleSaveRule} className="mb-[16px] space-y-[10px] rounded-[8px] border border-stroke bg-bg p-[12px]">
+              <form onSubmit={handleSaveRule} className="mb-[16px] space-y-[10px] border-t border-line pt-[12px]">
                 <div className="grid grid-cols-2 gap-[8px]">
                   <input
                     type="text"
@@ -518,7 +518,7 @@ export default function SiteDetailPage() {
                     <div
                       key={rule.id}
                       className={cx(
-                        "flex items-center gap-[8px] rounded-[6px] border border-stroke bg-raised px-[10px] py-[8px]",
+                        "flex items-center gap-[8px] border-t border-line pt-[8px]",
                         rule.enabled === false ? "opacity-50" : ""
                       )}
                     >

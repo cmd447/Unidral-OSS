@@ -182,7 +182,7 @@ export default function ModulesPage() {
           </div>
 
           {error ? (
-            <div className="mb-[16px] rounded-[8px] border border-errorBorder bg-errorSurface px-[14px] py-[10px] text-[12.5px] text-error">
+            <div className="mb-[16px] border-l-2 border-error bg-errorSurface/30 px-[14px] py-[10px] text-[12.5px] text-error">
               {error}
             </div>
           ) : null}
@@ -208,7 +208,7 @@ export default function ModulesPage() {
               </div>
             </Card>
           ) : (
-            <div className="grid grid-cols-2 gap-[14px] px-[8px] sm:grid-cols-3 lg:grid-cols-4">
+            <div className="px-[8px]">
               {modules.map((mod) => (
                 <ModuleCard
                   key={mod.id}
@@ -270,7 +270,7 @@ function ModuleCard({ module: mod, onDuplicate, onDelete, onExport }) {
 
   return (
     <div
-      className="group relative cursor-pointer rounded-[10px] border border-stroke bg-raised transition-all hover:border-stroke"
+      className="group relative cursor-pointer border-b border-line transition-colors hover:bg-pressed/50"
       onClick={() => tapped ? setTapped(false) : null}
     >
       <Link href={`/modules/${mod.id}`} className="block">

@@ -141,7 +141,7 @@ export default function ModuleDetailPage() {
           </div>
 
           {error ? (
-            <div className="mb-[16px] rounded-[8px] border border-errorBorder bg-errorSurface px-[14px] py-[10px] text-[12.5px] text-error">
+            <div className="mb-[16px] border-l-2 border-error bg-errorSurface/30 px-[14px] py-[10px] text-[12.5px] text-error">
               {error}
             </div>
           ) : null}

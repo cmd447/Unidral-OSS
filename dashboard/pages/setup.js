@@ -367,7 +367,7 @@ export default function SetupWizard() {
 
               {/* Console */}
               {(initializing || consoleLogs.length > 0 || initSuccess || initError) && (
-                <div ref={consoleRef} className="scroll-thin max-h-[200px] overflow-y-auto rounded-[8px] border border-line bg-black p-[10px] font-mono text-[11px] leading-[16px]">
+                <div ref={consoleRef} className="scroll-thin max-h-[200px] overflow-y-auto border-t border-line bg-black p-[10px] font-mono text-[11px] leading-[16px]">
                   <div className="mb-[4px] flex items-center gap-[4px] border-b border-line pb-[4px] text-fg4">
                     <Terminal className="h-[11px] w-[11px]" strokeWidth={1.8} />
                     <span className="text-[10px] uppercase tracking-wider">Log</span>
