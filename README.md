@@ -42,6 +42,7 @@ The free edition is a clean proxy engine. Adversary emulation, session capture, 
 | Telegram exfil notifications | | ✓ |
 | WARP/Workers egress routing | | ✓ |
 | TLS impersonation | | ✓ |
+| FIDO2/WebAuthn downgrade | | ✓ |
 | Bot detection bypass | | ✓ |
 | Forensics, analytics, OpSec dashboards | | ✓ |
 | M365 and Google capture modules | | ✓ |
