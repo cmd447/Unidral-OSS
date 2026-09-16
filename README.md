@@ -339,6 +339,14 @@ Need session capture, adversary emulation, BITB, egress routing, TLS impersonati
 
 <p align="center"><b><a href="https://unidral.cc">unidral.cc</a></b></p>
 
+### Sneak peek: Browser-in-the-Browser
+
+A quick look at Pro's BITB module in action: a fake OS window rendered inside the proxied page, complete with a spoofed address bar, while the real session flows underneath.
+
+<p align="center">
+  <video src="assets/presenting-bitb.mp4" controls muted width="720"></video>
+</p>
+
 ## Support
 
 - **Telegram:** [@unidrals](https://t.me/unidrals)
