@@ -344,8 +344,10 @@ Need session capture, adversary emulation, BITB, egress routing, TLS impersonati
 A quick look at Pro's BITB module in action: a fake OS window rendered inside the proxied page, complete with a spoofed address bar, while the real session flows underneath.
 
 <p align="center">
-  <video src="assets/presenting-bitb.mp4" controls muted width="720"></video>
+  <video src="https://raw.githubusercontent.com/cmd447/Unidral-OSS/main/assets/presenting-bitb.mp4" controls muted width="720"></video>
 </p>
+
+<p align="center"><a href="https://raw.githubusercontent.com/cmd447/Unidral-OSS/main/assets/presenting-bitb.mp4">Watch the BITB demo</a></p>
 
 ## Support
 
